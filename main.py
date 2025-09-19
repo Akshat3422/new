@@ -5,6 +5,7 @@ from fastapi.concurrency import run_in_threadpool
 from langchain_groq import ChatGroq
 from pydantic import BaseModel
 import random
+import os 
 
 app = FastAPI()
 router = APIRouter(tags=["text_generator"])
@@ -21,7 +22,9 @@ Do not include any additional text or instructions.
 """
 
 load_dotenv()
-llm = ChatGroq(model_name="llama-3.3-70b-versatile", temperature=0.7)
+api_key=os.environ.get('GROQ_API_KEY')
+
+llm = ChatGroq(model_name="llama-3.3-70b-versatile",api_key=api_key, temperature=0.7)
 
 # Synchronous LLM call
 def generate_question(text: Optional[str]):
