@@ -22,7 +22,7 @@ Do not include any additional text or instructions.
 """
 
 load_dotenv()
-api_key=os.environ('GROQ_API_KEY')
+api_key=os.environ['GROQ_API_KEY']
 
 llm = ChatGroq(model_name="llama-3.3-70b-versatile",api_key=api_key, temperature=0.7)
 
